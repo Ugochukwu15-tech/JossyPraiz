@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All Fabrics — JossyPraiz Textile | Ankara, Senator, Lace & More</title>
+  <meta name="description" content="Browse our complete collection of quality textiles. Premium Ankara fabrics, senator materials, lace, hijab materials and more. Shop online with nationwide delivery in Nigeria.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header"><div class="container">
+    <a href="index.html" class="logo"><div class="logo-icon">JP</div><div class="logo-text">Jossy<span>Praiz</span></div></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a><a href="shop.html" class="active">Shop</a><a href="categories.html">Categories</a>
+      <a href="about.html">About</a><a href="testimonials.html">Reviews</a><a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-search-btn" aria-label="Search">🔍</button>
+      <a href="cart.html" class="nav-cart-btn" aria-label="Cart">🛒<span class="cart-badge" style="display:none;">0</span></a>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div></header>
+  <nav class="mobile-nav"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="categories.html">Categories</a><a href="about.html">About</a><a href="testimonials.html">Reviews</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="cart.html">Cart</a></nav>
+  <div class="search-overlay"><button class="search-close">✕</button><input type="text" placeholder="Search fabrics..."></div>
+
+  <!-- PAGE BANNER -->
+  <section class="page-banner">
+    <div class="container">
+      <h1>Shop All Fabrics</h1>
+      <p>Premium clothing materials for every occasion</p>
+      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Shop</span></div>
+    </div>
+  </section>
+
+  <!-- SHOP SECTION -->
+  <section class="section">
+    <div class="container">
+      <div class="shop-layout">
+        <!-- Sidebar -->
+        <aside class="shop-sidebar">
+          <div class="filter-group">
+            <h4>Categories</h4>
+            <label><input type="checkbox" value="ankara" class="cat-filter"> Ankara & Native</label>
+            <label><input type="checkbox" value="senator" class="cat-filter"> Senator Materials</label>
+            <label><input type="checkbox" value="tshirt" class="cat-filter"> T-Shirt Fabrics</label>
+            <label><input type="checkbox" value="hijab" class="cat-filter"> Hijab Materials</label>
+            <label><input type="checkbox" value="lace" class="cat-filter"> Lace & Premium</label>
+            <label><input type="checkbox" value="shirt" class="cat-filter"> Shirt Fabrics</label>
+            <label><input type="checkbox" value="bundle" class="cat-filter"> Bundles</label>
+          </div>
+          <div class="filter-group">
+            <h4>Price Range</h4>
+            <label><input type="checkbox" value="0-3000" class="price-filter"> Under ₦3,000</label>
+            <label><input type="checkbox" value="3000-6000" class="price-filter"> ₦3,000 – ₦6,000</label>
+            <label><input type="checkbox" value="6000-10000" class="price-filter"> ₦6,000 – ₦10,000</label>
+            <label><input type="checkbox" value="10000-99999" class="price-filter"> Above ₦10,000</label>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="clearFilters()" style="width:100%;justify-content:center;">Clear Filters</button>
+        </aside>
+        <!-- Products -->
+        <div>
+          <div class="shop-toolbar">
+            <span class="results-count" id="results-count">16 products</span>
+            <select id="sort-select" onchange="applyFilters()">
+              <option value="default">Sort by: Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+              <option value="newest">Newest First</option>
+            </select>
+          </div>
+          <div class="products-grid" id="shop-products"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><a href="index.html" class="logo"><div class="logo-icon">JP</div><div class="logo-text">Jossy<span>Praiz</span></div></a><p>Your trusted source for premium quality fabrics in Nigeria.</p><div class="footer-social"><a href="#">📷</a><a href="#">📘</a><a href="#" onclick="openWhatsApp()">💬</a></div></div>
+    <div class="footer-col"><h4>Quick Links</h4><a href="shop.html">Shop All</a><a href="categories.html">Categories</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><h4>Categories</h4><a href="shop.html?category=ankara">Ankara</a><a href="shop.html?category=senator">Senator</a><a href="shop.html?category=lace">Lace</a><a href="shop.html?category=hijab">Hijab</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="tel:+96891694398">📞 +968 9169 4398</a><a href="mailto:info@jossypraiz.com">✉ info@jossypraiz.com</a></div>
+  </div><div class="footer-bottom"><p>&copy; 2026 JossyPraiz Textile. All rights reserved.</p></div></div></footer>
+
+  <a href="javascript:void(0)" class="whatsapp-fab" onclick="openWhatsApp()" aria-label="WhatsApp">💬</a>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const preselectedCat = params.get('category');
+    const searchQuery = params.get('search');
+
+    if (preselectedCat) {
+      document.querySelectorAll('.cat-filter').forEach(cb => {
+        if (cb.value === preselectedCat) cb.checked = true;
+      });
+    }
+
+    function applyFilters() {
+      let filtered = [...PRODUCTS];
+      const selectedCats = [...document.querySelectorAll('.cat-filter:checked')].map(cb => cb.value);
+      const selectedPrices = [...document.querySelectorAll('.price-filter:checked')].map(cb => cb.value);
+      const sort = document.getElementById('sort-select').value;
+
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        filtered = filtered.filter(p => p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q) || p.category.includes(q));
+      }
+      if (selectedCats.length) filtered = filtered.filter(p => selectedCats.includes(p.category));
+      if (selectedPrices.length) {
+        filtered = filtered.filter(p => selectedPrices.some(range => {
+          const [min, max] = range.split('-').map(Number);
+          return p.price >= min && p.price <= max;
+        }));
+      }
+      if (sort === 'price-low') filtered.sort((a,b) => a.price - b.price);
+      else if (sort === 'price-high') filtered.sort((a,b) => b.price - a.price);
+      else if (sort === 'rating') filtered.sort((a,b) => b.rating - a.rating);
+
+      document.getElementById('results-count').textContent = filtered.length + ' product' + (filtered.length !== 1 ? 's' : '');
+      renderProducts('shop-products', filtered);
+    }
+
+    window.clearFilters = function() {
+      document.querySelectorAll('.cat-filter, .price-filter').forEach(cb => cb.checked = false);
+      document.getElementById('sort-select').value = 'default';
+      applyFilters();
+    };
+
+    document.querySelectorAll('.cat-filter, .price-filter').forEach(cb => cb.addEventListener('change', applyFilters));
+    applyFilters();
+  </script>
+</body>
+</html>

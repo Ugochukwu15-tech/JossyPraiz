@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart — JossyPraiz Textile</title>
+  <meta name="description" content="Review your selected fabrics and proceed to checkout. JossyPraiz Textile — Quality Fabrics for Every Style.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header"><div class="container">
+    <a href="index.html" class="logo"><div class="logo-icon">JP</div><div class="logo-text">Jossy<span>Praiz</span></div></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="categories.html">Categories</a>
+      <a href="about.html">About</a><a href="testimonials.html">Reviews</a><a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-search-btn" aria-label="Search">🔍</button>
+      <a href="cart.html" class="nav-cart-btn active" aria-label="Cart">🛒<span class="cart-badge" style="display:none;">0</span></a>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div></header>
+  <nav class="mobile-nav"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="categories.html">Categories</a><a href="about.html">About</a><a href="testimonials.html">Reviews</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="cart.html">Cart</a></nav>
+  <div class="search-overlay"><button class="search-close">✕</button><input type="text" placeholder="Search fabrics..."></div>
+
+  <!-- PAGE BANNER -->
+  <section class="page-banner">
+    <div class="container">
+      <h1>Shopping Cart</h1>
+      <p>Review your selected fabrics</p>
+      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Cart</span></div>
+    </div>
+  </section>
+
+  <!-- CART SECTION -->
+  <section class="section">
+    <div class="container">
+      <!-- EMPTY STATE -->
+      <div id="cart-empty" style="display:none;">
+        <div class="empty-state">
+          <div class="icon">🛒</div>
+          <h3>Your Cart is Empty</h3>
+          <p>It looks like you haven't added any fabrics yet. Browse our collection and find something beautiful!</p>
+          <a href="shop.html" class="btn btn-primary">Start Shopping →</a>
+        </div>
+      </div>
+
+      <!-- CART WITH ITEMS -->
+      <div id="cart-full" class="cart-layout" style="display:none;">
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <div id="cart-summary-content"></div>
+          <button class="btn btn-whatsapp" onclick="sendWhatsAppOrder()">💬 Order via WhatsApp</button>
+          <div class="checkout-form">
+            <h4>Or Place Order Directly</h4>
+            <form onsubmit="placeOrder(event)">
+              <div class="form-group">
+                <label for="checkout-name">Full Name</label>
+                <input type="text" id="checkout-name" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label for="checkout-phone">Phone Number</label>
+                <input type="tel" id="checkout-phone" placeholder="08012345678" required>
+              </div>
+              <div class="form-group">
+                <label for="checkout-address">Delivery Address</label>
+                <textarea id="checkout-address" placeholder="Enter your full delivery address" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Place Order</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><a href="index.html" class="logo"><div class="logo-icon">JP</div><div class="logo-text">Jossy<span>Praiz</span></div></a><p>Your trusted source for premium quality fabrics in Nigeria.</p><div class="footer-social"><a href="#">📷</a><a href="#">📘</a><a href="#" onclick="openWhatsApp()">💬</a></div></div>
+    <div class="footer-col"><h4>Quick Links</h4><a href="shop.html">Shop All</a><a href="categories.html">Categories</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><h4>Categories</h4><a href="shop.html?category=ankara">Ankara</a><a href="shop.html?category=senator">Senator</a><a href="shop.html?category=lace">Lace</a><a href="shop.html?category=hijab">Hijab</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="tel:+96891694398">📞 +968 9169 4398</a><a href="mailto:info@jossypraiz.com">✉ info@jossypraiz.com</a></div>
+  </div><div class="footer-bottom"><p>&copy; 2026 JossyPraiz Textile. All rights reserved.</p></div></div></footer>
+
+  <a href="javascript:void(0)" class="whatsapp-fab" onclick="openWhatsApp()" aria-label="WhatsApp">💬</a>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script>renderCartPage();</script>
+</body>
+</html>
